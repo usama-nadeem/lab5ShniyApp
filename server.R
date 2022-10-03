@@ -1,30 +1,29 @@
+
 library(shiny)
 library(shinythemes)
 require(QuotesGenerator)
-val_data <- unname(fetchRandomQuote())
-strr <- toString(val_data[3])
-
-all_q<-unname(fetchAllQuotes())
-strrall <- toString(all_q[3])
-#shinyServer(function(input, output) {
-  #output$Quotation <- renderUI({
-  #  selectInput("valdata", "Random Quotation", val_data[3])
- # })})
 
 server <- function(input, output) {
 
-  output$selected_var <- renderText({
-    if(input$var=="Random Quotation")
-    {
-    strr}
-    else
-    {
-      output$selected_var <- renderText({strrall})
+  values <- reactiveValues()
+  observeEvent(input$var, {
+    if (input$var == "Random Quotation") {
+      val_data <- unname(fetchRandomQuote())
+      strr <- toString(val_data[3])
+      values$data <- strr
+    } else if(input$var == "All Quotations") {
+      all_q<-unname(fetchAllQuotes())
+      strrall <-toString(all_q[3])
+      values$data <-strrall
+    }
+    else {
+      values$data <- "Wrong value selected"
     }
 
   })
 
 
+  output$selected_var <- renderText(values$data)
 
 }
 
