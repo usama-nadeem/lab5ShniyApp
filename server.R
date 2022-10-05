@@ -1,7 +1,5 @@
 
-library(shiny)
-library(shinythemes)
-require(QuotesGenerator)
+require(lab05)
 
 server <- function(input, output) {
 
