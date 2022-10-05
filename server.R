@@ -1,6 +1,4 @@
 
-require(lab05)
-
 server <- function(input, output) {
 
   values <- reactiveValues()
