@@ -2,7 +2,6 @@ Package: lab5ShniyApp
 Type: Package
 Title: What the Package Does (Title Case)
 Version: 0.1.0
-Imports: lab05
 Author: Umair, Usama
 Maintainer: The package maintainer <yourself@somewhere.net>
 Description: This package display visual results.
